@@ -8,12 +8,6 @@
   (fn [a]
     (not (seq? a))))
 
-(def null?
-  (fn [a]
-    (or
-      (nil? a)
-      (= () a))))
-
 ;;; Chapter 1. Toys
 
 ;;; p3
@@ -78,6 +72,74 @@
 
 ;;; p7
 (rest '())
+
+;;; The law of rest - defined only for non empty list, the cdr of a non emty
+;;; list is a list
+
+(first (rest '((b) (x y) ((c)))))
+(rest (rest '((b) (x y) ((c)))))
+;; (rest (first '(a (b (c)) d)))
+(cons 'peanut '(butter and jelly))
+
+;;; p8
+(cons '(banana and) '(peanut butter and jelly))
+(cons '((help) this) '(is very ((hard) to learn)))
+(cons '(a b (c)) '())
+(cons 'a '())
+;; (cons '((a b c)) 'b)
+;; (cons 'a 'b)
+
+;;; p9
+
+;;; the law of cons - two arguments, the second must be a list, the result
+;;; is a list
+
+(cons 'a (first '((b) c d)))
+(cons 'a (rest '((b) c d)))
+
+(def null?
+  (fn [a]
+    (or
+      (nil? a)
+      (= () a))))
+
+(null? '())
+(null? '(a b c))
+
+;;; p10
+(null? 'spaguetti)
+
+;;; law of null? - defined only for lists
+
+(atom? 'Harry)
+(atom? '(Harry had a heap of apples))
+
+;;; p11
+
+(atom? (first '(Harry had a heap of apples)))
+(atom? (rest '(Harry had a heap of apples)))
+(atom? (rest '(Harry)))
+(atom? (first (rest '(swing low sweet cherry oat))))
+(atom? (first (rest '(swing (low sweet) cherry oat))))
+(= 'Harry 'Harry)
+(= 'Harry 'Harry)
+(= 'Margarine 'Butter)
+
+;;; p12
+
+(= '() '(strawberry))
+(= 6 7)
+
+;;; the law of = : it takes two arguments, each a non numeric atom
+
+(= (first '(Mary had a little lamb chop)) 'Mary)
+(= (rest '(soured milk)) 'milk)
+
+;;; p13
+
+(= (first '(beans beans we need jelly beans)) (first (rest '(beans beans we need jelly beans))))
+
+
 
 ;; Copyright 2013 Romeu “Malk’Zameth” MOURA
 ;; This file is part of the-little-clojurer. the-little-clojurer is free
