@@ -14,6 +14,7 @@
 
 ;;; first - clojure's "car"
 
+;;; rest - clojure's "cdr"
 ;;; 1. Toys
 
 ;;; 3
@@ -48,6 +49,16 @@
 (first '())
 
 ;;; The law of first : defined only for non empty seqs
+
+;;; 6
+(first '(((hotdogs)) (and) (pickle) relish))
+(first '(((hotdogs)) (and) (pickle) relish))
+(first (first '(((hotdogs)) (and) (pickle) relish)))
+(rest '(a b c))
+(rest '((a b c) x y z))
+(rest '(hamburger))
+(rest '((x) t r))
+;; (rest 'hotdogs)
 
 (def null?
   (fn [a]
