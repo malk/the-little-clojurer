@@ -1,23 +1,22 @@
 (ns the-little-clojurer.core)
 
+;;; The Little 'Clojurer'
+
+;;; Preface
+
 (def atom?
   (fn [a]
     (not (seq? a))))
 
-;;; seq? - clojure's "is this a list"
+(def null?
+  (fn [a]
+    (or
+      (nil? a)
+      (= () a))))
 
-(def sexp?
-  (fn [n]
-     (or (seq? n)
-        (atom? n)
-        )))
+;;; Chapter 1. Toys
 
-;;; first - clojure's "car"
-
-;;; rest - clojure's "cdr"
-;;; 1. Toys
-
-;;; 3
+;;; p3
 (atom? 'atom)
 (atom? 'turkey)
 (atom? 1492)
@@ -28,9 +27,20 @@
 (atom? '(atom))
 (atom? '(atom turkey or))
 
-;;; 4
-;;; (coll? '(atom turkey) 'or)
+
+;;; p4
+
+;;; seq? - clojure's "is this a list"
+
+;;; (seq? '(atom turkey) 'or)
 (seq? '((atom turkey) or))
+
+(def sexp?
+  (fn [n]
+     (or (seq? n)
+        (atom? n)
+        )))
+
 (sexp? 'xyz)
 (sexp? '(x y z))
 (sexp? '((x y) z))
@@ -39,10 +49,13 @@
 (seq? '(((how) are) ((you) (doing so)) far))
 (count '(((how) are) ((you) (doing so)) far))
 
-;;; 5
+;;; p5
 (seq? '())
 (atom? '())
 (seq? '(() () () ()))
+
+;;; first - clojure's "car"
+
 (first '(a b c))
 (first '((a b c) x y z))
 ;; (first 'hotdog)
@@ -50,21 +63,19 @@
 
 ;;; The law of first : defined only for non empty seqs
 
-;;; 6
+;;; p6
 (first '(((hotdogs)) (and) (pickle) relish))
 (first '(((hotdogs)) (and) (pickle) relish))
 (first (first '(((hotdogs)) (and) (pickle) relish)))
+
+;;; rest - clojure's "cdr"
+
 (rest '(a b c))
 (rest '((a b c) x y z))
 (rest '(hamburger))
 (rest '((x) t r))
 ;; (rest 'hotdogs)
 
-;;; 7
+;;; p7
 (rest '())
-(def null?
-  (fn [a]
-    (or
-      (nil? a)
-      (= () a))))
 
