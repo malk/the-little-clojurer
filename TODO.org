@@ -1,0 +1,4 @@
+* references
+** https://github.com/cellularmitosis/little-schemer-clojure/blob/master/chapter_1.creole
+** http://juliangamble.com/blog/2012/07/20/the-little-schemer-in-clojure-chapter-1/
+   
