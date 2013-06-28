@@ -1,14 +1,22 @@
 # the-little-clojurer
 
-My personal Jab at doing [the little schemer][] in Clojure, like legions of
-others before me.
+Yet another Jab at doing [the little schemer][] in Clojure. (is a rite, you
+should just do it too).
 
-This version tries to remain as close as possible to the source material,
-doing the things like the book does when possible, it is Clojure only in the
-sense that it is valid Clojure syntax, once I finish this I shall do another
-version using idiomatic Clojure as much as possible.
+The idea (as in the book) is to teach recursion, the Y combinator and using
+them to build a lisp interpreter.
 
-## License
+Using as little as possible of the language itself, no constructs, no
+libraries, just the functions created in the book and the the primitives
+they need.
+
+Will not teach you clojure (and the book did not taught scheme).
+
+Only contains my answers, not the content of the book itself, and
+should make no sene without the book. I wanted to respect the author's
+CopyRight
+
+# License
 
 Copyright 2013 Romeu “Malk’Zameth” MOURA
 This file is part of the-little-clojurer. the-little-clojurer is free
