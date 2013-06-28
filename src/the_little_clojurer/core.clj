@@ -8,7 +8,7 @@
 
 (def sexp?
   (fn [n]
-     (or (coll? n)
+     (or (seq? n)
         (atom? n)
         )))
 
@@ -60,6 +60,8 @@
 (rest '((x) t r))
 ;; (rest 'hotdogs)
 
+;;; 7
+(rest '())
 (def null?
   (fn [a]
     (or
