@@ -1,6 +1,8 @@
 (ns the-little-clojurer.core-test
-  (:use clojure.test
+  (:use midje.sweet
         the-little-clojurer.core))
+
+
 
 (deftest a-test
   (testing "FIXME, I fail."
