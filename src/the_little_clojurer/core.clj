@@ -139,6 +139,50 @@
 
 (= (first '(beans beans we need jelly beans)) (first (rest '(beans beans we need jelly beans))))
 
+;;; Chapter 2: Do it, Do it Again, and Again, and Again...
+
+;;; p16
+(def lat? (fn [l]
+          (cond
+           (null? l) true
+           (atom? (first l)) (lat? (rest l))
+           :else false
+           )))
+
+(lat? '(bacon and eggs))
+
+;;; p15 (yes I've put p16 first, so we can have the definition before the usage when evaluating this file, will do so onwards
+(lat? '(Jack Sprat could eat no chicken fat))
+(lat? '((Jack) Sprat could eat no chicken fat))
+(lat? '(Jack (Sprat could) eat no chicken fat))
+(lat? '())
+
+;;; p19
+(lat? '(bacon (and eggs)))
+
+;;; p21
+(or (null? '()) (atom? '(d e f g)))
+(or (null? '(a b c)) (null? '()))
+
+;;; p22
+(def member? (fn [a lat]
+             (cond
+              (null? lat) false
+              :else (or (= a (first lat))
+                       (member? a (rest lat)))
+              )))
+
+(member? 'tea '(coffee tea or milk))
+(member? 'poached '(fried eggs and scrambled eggs))
+(member? 'meat '(mashed potatoes and meat gravy))
+(member? 'liver '(bagel and lox))
+
+
+;;; p23
+
+;;; Commandement 1: (preliminary) always ask null? as the first question of
+;;; any function
+
 
 
 ;; Copyright 2013 Romeu “Malk’Zameth” MOURA
