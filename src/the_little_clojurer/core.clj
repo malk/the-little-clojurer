@@ -183,6 +183,84 @@
 ;;; Commandement 1: (preliminary) always ask null? as the first question of
 ;;; any function
 
+;;; Chapter 3. Cons the magnificent
+
+;;; p34
+(def rember
+  (fn [a lat]
+    (cond
+     (null? lat) '()
+     :else (cond
+            (= a (first lat)) (rest lat)
+            :else (rember a (rest lat))
+            )
+     )))
+
+
+;;; p33
+(rember 'mint '(lamb chops and mint jelly))
+(rember 'mint '(lamb chops and mint flavored mint jelly))
+(rember 'toast '(bacon letuce and tomato))
+(rember 'cup '(coffee cup tea cup and hick cup))
+
+;;; p37
+
+;;; the second commandment : use cons to build lists
+(def rember
+  (fn [a lat]
+    (cond
+     (null? lat) '()
+     :else (cond
+            (= a (first lat)) (rest lat)
+            :else (cons (first lat) (rember a (rest lat)))
+            )
+     )))
+
+(rember 'and '(bacon letuce and tomato))
+
+;;; p41
+(def rember
+  (fn [a lat]
+    (cond
+     (null? lat) '()
+     (= a (first lat)) (rest lat)
+     :else (cons (first lat) (rember a (rest lat)))
+     )))
+
+;;; p42
+(rember 'sauce '(soy sauce and tomato sauce))
+
+;;; p44
+
+(def firsts
+  (fn [l]
+    (cond
+     (null? l) '()
+     :else (cons (first (first l)) (firsts (rest l)))
+     )))
+
+;;; p43
+(firsts '((apple peach pumpkin)
+          (plum pear cherry)
+          (grape raisin pea)
+          (bean carrot eggplant)
+          ))
+
+(firsts '((a b) (c d) (e f)))
+
+(firsts '())
+
+(firsts '(
+          (five plums)
+          (four)
+          (eleven green oranges)
+          ))
+
+(firsts '(
+          ((five plums) four)
+          (eleven green oranges)
+          ((no) more)
+          ))
 
 
 ;; Copyright 2013 Romeu “Malk’Zameth” MOURA
