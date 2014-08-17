@@ -877,9 +877,28 @@
 
 (eqset? '(6 large chicken with wings) '(6 chicken with large wings))
 
+(def intersect?
+  (fn [s1 s2]
+    (cond
+     (null? s1) false
+     :else (or (member? (first s1) s2) (intersect? (rest s1) s2))
+     )))
+
+(intersect? '(stewed tomatoes and macaroni) '(macaroni and cheese))
+
+(def intersect
+  (fn [s1 s2]
+    (cond
+     (null? s1) '()
+     :else (intersect )
+     )))
 
 
-;; Copyright 2013 Romeu “Malk’Zameth” MOURA
+(intersect '(stewed tomatoes and macaroni) '(macaroni and cheese))
+
+
+
+;; Copyright 2013, 2014 Romeu “Malk’Zameth” MOURA
 ;; This file is part of the-little-clojurer. the-little-clojurer is free
 ;; software: you can redistribute it and/or modify it under the terms of the
 ;; GNU General Public License as published by the Free Software Foundation,
